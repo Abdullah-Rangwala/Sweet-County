@@ -1,0 +1,239 @@
+/* Global Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #faf7f2; /* Warm, creamy bakery background */
+    color: #4b3832; /* Deep chocolate brown text */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a36b4f;
+}
+
+.navbar nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4b3832;
+    font-weight: 500;
+}
+
+.cart-btn {
+    background: #a36b4f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: #8c5a41;
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(75, 56, 50, 0.6), rgba(75, 56, 50, 0.6)), url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1600') center/cover;
+    color: white;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    padding: 12px 30px;
+    background: #f1d27a;
+    color: #4b3832;
+    border: none;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #d4af37;
+    transform: translateY(-2px);
+}
+
+/* Discovery Section */
+.discovery-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.search-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border: 2px solid #e0d5c1;
+    border-radius: 30px;
+    outline: none;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.search-input:focus {
+    border-color: #a36b4f;
+    box-shadow: 0 0 10px rgba(163, 107, 79, 0.2);
+}
+
+/* Category Filters */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    background: transparent;
+    border: 2px solid #a36b4f;
+    color: #a36b4f;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #a36b4f;
+    color: white;
+}
+
+/* Product Grid & Cards */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.rating {
+    font-size: 0.9rem;
+    color: #d4af37;
+    margin-bottom: 5px;
+}
+
+.card-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.card-info p {
+    color: #7a635c;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer h4 {
+    font-size: 1.3rem;
+    color: #a36b4f;
+}
+
+.card-footer button {
+    padding: 8px 18px;
+    background: #4b3832;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card-footer button:hover {
+    background: #a36b4f;
+}
+
+.loader, .no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7a635c;
+    margin-top: 40px;
+    grid-column: 1 / -1;
+}
