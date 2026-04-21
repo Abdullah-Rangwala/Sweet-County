@@ -17,10 +17,26 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    const removeFromCart = (productId) => {
+        setCart((prevCart) => {
+            const existingItem = prevCart.find(item => item._id === productId);
+            if (existingItem && existingItem.quantity > 1) {
+                return prevCart.map(item =>
+                    item._id === productId ? { ...item, quantity: item.quantity - 1 } : item
+                );
+            }
+            return prevCart.filter(item => item._id !== productId);
+        });
+    };
+
+    const deleteFromCart = (productId) => {
+        setCart((prevCart) => prevCart.filter(item => item._id !== productId));
+    };
+
     const clearCart = () => setCart([]);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, deleteFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

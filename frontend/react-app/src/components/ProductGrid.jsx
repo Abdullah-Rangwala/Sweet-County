@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard'; 
 
-const ProductGrid = ({ category, searchQuery, setCartCount }) => {
+const ProductGrid = ({ category, searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +36,6 @@ const ProductGrid = ({ category, searchQuery, setCartCount }) => {
           <ProductCard
             key={product._id}
             product={product}
-            setCartCount={setCartCount}
           />
         ))
       )}
