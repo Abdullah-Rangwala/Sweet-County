@@ -8,6 +8,7 @@ import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import CartPage from './components/CartPage';
+import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage'; 
 import AdminDashboard from './pages/AdminDashboard'; 
 
@@ -19,20 +20,23 @@ function App() {
           <div className="App">
             <Navbar />
             <Routes>
-              {/* 1. Login is now the very first page the user sees */}
               <Route path="/" element={<Login />} />
 
-              {/* 2. The Bakery Store is moved to /store */}
               <Route path="/store" element={
                   <ProtectedRoute>
                       <Home />
                   </ProtectedRoute>
               } />
 
-              {/* Protected Customer Routes */}
               <Route path="/cart" element={
                 <ProtectedRoute>
                   <CartPage />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/payment" element={
+                <ProtectedRoute>
+                  <PaymentPage />
                 </ProtectedRoute>
               } />
               
@@ -42,7 +46,6 @@ function App() {
                 </ProtectedRoute>
               } />
 
-              {/* Protected Admin Routes */}
               <Route path="/admin" element={
                 <ProtectedRoute requireAdmin={true}>
                   <AdminDashboard />

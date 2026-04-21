@@ -51,8 +51,18 @@ const ProfilePage = () => {
         switch (status) {
             case 'Pending': return '#e8a317';
             case 'Confirmed': return '#2196F3';
+            case 'Out for Delivery': return '#ff9800';
             case 'Delivered': return '#4CAF50';
             case 'Cancelled': return '#cc4444';
+            default: return '#7a635c';
+        }
+    };
+
+    const getPaymentColor = (ps) => {
+        switch (ps) {
+            case 'Paid': return '#4CAF50';
+            case 'Refunded': return '#ff9800';
+            case 'Pending': return '#e8a317';
             default: return '#7a635c';
         }
     };
@@ -156,16 +166,30 @@ const ProfilePage = () => {
                                         {formatDate(order.createdAt)}
                                     </p>
                                 </div>
-                                <span style={{
-                                    padding: '5px 15px',
-                                    borderRadius: '20px',
-                                    fontSize: '0.85rem',
-                                    fontWeight: 'bold',
-                                    background: getStatusColor(order.status) + '20',
-                                    color: getStatusColor(order.status)
-                                }}>
-                                    {order.status}
-                                </span>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
+                                    <span style={{
+                                        padding: '5px 15px',
+                                        borderRadius: '20px',
+                                        fontSize: '0.85rem',
+                                        fontWeight: 'bold',
+                                        background: getStatusColor(order.status) + '20',
+                                        color: getStatusColor(order.status)
+                                    }}>
+                                        {order.status}
+                                    </span>
+                                    {order.paymentStatus && (
+                                        <span style={{
+                                            padding: '3px 10px',
+                                            borderRadius: '15px',
+                                            fontSize: '0.75rem',
+                                            fontWeight: 'bold',
+                                            background: getPaymentColor(order.paymentStatus) + '15',
+                                            color: getPaymentColor(order.paymentStatus)
+                                        }}>
+                                            💳 {order.paymentMethod} — {order.paymentStatus}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Order Items */}
@@ -187,15 +211,30 @@ const ProfilePage = () => {
                                 ))}
                             </div>
 
-                            {/* Order Total */}
+                            {/* Order Total + Refund Notice */}
                             <div style={{
                                 borderTop: '1px solid #f0ebe4',
                                 marginTop: '10px',
                                 paddingTop: '12px',
                                 display: 'flex',
-                                justifyContent: 'flex-end'
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                flexWrap: 'wrap',
+                                gap: '10px'
                             }}>
-                                <h3 style={{ color: '#3d2b1f' }}>Total: ₹{order.totalAmount}</h3>
+                                {order.paymentStatus === 'Refunded' && (
+                                    <p style={{
+                                        color: '#ff9800',
+                                        fontSize: '0.9rem',
+                                        fontWeight: 'bold',
+                                        background: '#fff8e1',
+                                        padding: '8px 14px',
+                                        borderRadius: '8px'
+                                    }}>
+                                        💸 ₹{order.totalAmount} refunded to your account
+                                    </p>
+                                )}
+                                <h3 style={{ color: '#3d2b1f', marginLeft: 'auto' }}>Total: ₹{order.totalAmount}</h3>
                             </div>
                         </div>
                     ))}
