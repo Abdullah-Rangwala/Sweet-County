@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
+import logo from '../logo.png';
 
 const Navbar = () => {
   const { cart } = useContext(CartContext);
@@ -15,7 +16,9 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="logo">
-        <Link to="/store" style={{ textDecoration: 'none', color: '#a36b4f' }}>Sweet County 🍰</Link>
+        <Link to="/store" style={{ textDecoration: 'none', color: '#a36b4f', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          Sweet County <img src={logo} alt="Sweet County Logo" style={{ height: '24px' }} />
+        </Link>
       </div>
       <nav>
         <Link to="/store">Store</Link>

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import logo from '../logo.png';
 
 const Login = () => {
     const [mode, setMode] = useState('user'); // 'user' or 'admin'
@@ -91,8 +92,8 @@ const Login = () => {
                 maxWidth: '420px'
             }}>
                 {/* Logo */}
-                <h1 style={{ textAlign: 'center', color: '#a36b4f', marginBottom: '25px', fontSize: '1.8rem' }}>
-                    Sweet County 🍰
+                <h1 style={{ textAlign: 'center', color: '#a36b4f', marginBottom: '25px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                    Sweet County <img src={logo} alt="Sweet County Logo" style={{ height: '32px' }} />
                 </h1>
 
                 {/* Mode Toggle: User / Admin */}
