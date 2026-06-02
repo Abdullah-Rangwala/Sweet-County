@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://sweet-county.vercel.app' // Replace with your actual Vercel URL later if needed
+  'https://sweetcounty.vercel.app/' // Replace with your actual Vercel URL later if needed
 ];
 app.use(cors({
   origin: function (origin, callback) {
