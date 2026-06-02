@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard'; 
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const ProductGrid = ({ category, searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +11,7 @@ const ProductGrid = ({ category, searchQuery }) => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        let url = `http://localhost:5000/api/products?`;
+        let url = `${API_BASE_URL}/api/products?`;
         if (category !== 'All') url += `category=${category}&`;
         if (searchQuery) url += `search=${searchQuery}`;
 

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const PaymentPage = () => {
     const { cart, clearCart } = useContext(CartContext);
     const { user } = useContext(AuthContext);
@@ -65,7 +67,7 @@ const PaymentPage = () => {
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         try {
-            const response = await fetch('http://localhost:5000/api/orders', {
+            const response = await fetch(`${API_BASE_URL}/api/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

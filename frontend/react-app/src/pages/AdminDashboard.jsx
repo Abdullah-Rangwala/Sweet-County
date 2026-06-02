@@ -11,6 +11,8 @@ const statusColors = {
     'Cancelled': '#cc4444'
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const AdminDashboard = () => {
     const { user, login } = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
@@ -37,7 +39,7 @@ const AdminDashboard = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/orders/all', {
+            const response = await fetch(`${API_BASE_URL}/api/orders/all`, {
                 headers: { 'Authorization': `Bearer ${user?.token}` }
             });
             if (!response.ok) throw new Error('Failed to fetch orders');
@@ -52,7 +54,7 @@ const AdminDashboard = () => {
     const updateStatus = async (orderId, newStatus) => {
         setUpdatingId(orderId);
         try {
-            const response = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+            const response = await fetch(`${API_BASE_URL}/api/orders/${orderId}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +75,7 @@ const AdminDashboard = () => {
         e.preventDefault();
         setPasswordMsg({ text: '', isError: false });
         try {
-            const response = await fetch('http://localhost:5000/api/auth/change-password', {
+            const response = await fetch(`${API_BASE_URL}/api/auth/change-password`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +100,7 @@ const AdminDashboard = () => {
         e.preventDefault();
         setAdminMsg({ text: '', isError: false });
         try {
-            const response = await fetch('http://localhost:5000/api/auth/create-admin', {
+            const response = await fetch(`${API_BASE_URL}/api/auth/create-admin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

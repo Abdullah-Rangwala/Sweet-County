@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import logo from '../logo.png';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const Login = () => {
     const [mode, setMode] = useState('user'); // 'user' or 'admin'
     const [isRegistering, setIsRegistering] = useState(false);
@@ -29,8 +31,8 @@ const Login = () => {
 
         try {
             const endpoint = isRegistering
-                ? 'http://localhost:5000/api/auth/register'
-                : 'http://localhost:5000/api/auth/login';
+                ? `${API_BASE_URL}/api/auth/register`
+                : `${API_BASE_URL}/api/auth/login`;
 
             const body = isRegistering
                 ? { name, email, password }
