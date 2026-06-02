@@ -11,7 +11,7 @@ const statusColors = {
     'Cancelled': '#cc4444'
 };
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = "https://sweet-county.onrender.com";
 
 const AdminDashboard = () => {
     const { user, login } = useContext(AuthContext);

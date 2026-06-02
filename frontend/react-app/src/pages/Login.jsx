@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import logo from '../logo.png';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = "https://sweet-county.onrender.com";
 
 const Login = () => {
     const [mode, setMode] = useState('user'); // 'user' or 'admin'
